@@ -10,9 +10,10 @@ namespace   App\Controller;
 
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-class HomeController
+class HomeController extends AbstractController
 {
     /**
      * @Route("/")
@@ -28,7 +29,9 @@ class HomeController
     public function users()
     {
         $users = ['Hemant', 'Rakesh', 'Kiran', 'Mohan'];
-        return new Response(json_encode($users));
+        return $this->render('users/users.html.twig', [
+            'users' => $users,
+        ]);
     }
 
     /**
